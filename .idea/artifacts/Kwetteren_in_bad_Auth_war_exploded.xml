@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Kwetteren-in-bad-Auth:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Kwetteren_in_bad_Auth_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Kwetteren-in-bad-Auth/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Kwetteren-in-bad-Auth" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
