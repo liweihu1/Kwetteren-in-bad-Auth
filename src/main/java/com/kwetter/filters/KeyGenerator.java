@@ -5,10 +5,14 @@ import com.google.gson.JsonObject;
 import com.kwetter.filters.interfaces.IKeyGenerator;
 
 import javax.crypto.spec.SecretKeySpec;
+import javax.ejb.Stateless;
+import javax.inject.Named;
 import java.security.Key;
 import java.util.Base64;
 import java.util.UUID;
 
+@Stateless
+@Named("KeyGenerator")
 public class KeyGenerator implements IKeyGenerator {
 
     @Override

@@ -2,6 +2,7 @@ package com.kwetter.filters;
 
 import com.kwetter.filters.interfaces.IKeyGenerator;
 
+import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -14,7 +15,7 @@ import java.util.UUID;
 
 @WebFilter(filterName = "TokenFilter")
 public class TokenFilter implements Filter {
-    @Inject
+    @EJB(beanName = "KeyGenerator")
     private IKeyGenerator authenticator;
 
     @Override

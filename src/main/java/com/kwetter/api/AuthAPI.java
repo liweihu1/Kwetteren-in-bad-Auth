@@ -26,15 +26,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-@Path("Auth")
+@Path("auth")
 public class AuthAPI {
     @Context
     private UriInfo uriInfo;
 
     @Inject
     private AuthService authService;
-
-    private LoginContext lc;
 
     private KeyGenerator keyGenerator;
 
@@ -48,19 +46,9 @@ public class AuthAPI {
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response login(LoginDTO loginDTO) {
-        FacesContext.getCurrentInstance();
-        try {
-            LoginCallbackHandler handler = new LoginCallbackHandler();
-            handler.setPassword(loginDTO.getPassword());
-            handler.setUsername(loginDTO.getUsername());
-            lc = new LoginContext("kwetter-security-api", handler);
-            lc.login();
-            LoginResult res = authService.login(loginDTO.getUsername(), loginDTO.getPassword());
-            JWTTokenDTO jwtToken = new JWTTokenDTO(generateToken(res.getUserId(), res.getRoles()), res.getUserId());
-            return Response.ok(jwtToken, MediaType.APPLICATION_JSON).build();
-        } catch (LoginException e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("The user credentials were not found or incorrect.").build();
-        }
+        LoginResult res = authService.login(loginDTO.getUsername(), loginDTO.getPassword());
+        JWTTokenDTO jwtToken = new JWTTokenDTO(generateToken(res.getUserId(), res.getRoles()), res.getUserId());
+        return Response.ok(jwtToken, MediaType.APPLICATION_JSON).build();
     }
 
     @DELETE
@@ -69,7 +57,6 @@ public class AuthAPI {
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Response logout(LoginDTO loginDTO){
-        //WRITE LOGOUT WITH JWT
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return Response.status(200).build();
     }
