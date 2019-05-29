@@ -6,6 +6,7 @@ import com.kwetter.dto.LoginDTO;
 import com.kwetter.dto.LoginResult;
 import com.kwetter.filters.KeyGenerator;
 import com.kwetter.service.AuthService;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -45,7 +46,7 @@ public class AuthAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
-    public Response login(LoginDTO loginDTO) {
+    public Response login(LoginDTO loginDTO) throws UnirestException {
         LoginResult res = authService.login(loginDTO.getUsername(), loginDTO.getPassword());
         JWTTokenDTO jwtToken = new JWTTokenDTO(generateToken(res.getUserId(), res.getRoles()), res.getUserId());
         return Response.ok(jwtToken, MediaType.APPLICATION_JSON).build();

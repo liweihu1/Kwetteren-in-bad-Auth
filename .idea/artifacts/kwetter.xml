@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="kwetter">
-    <output-path>$PROJECT_DIR$/out/artifacts/kwetter</output-path>
-    <root id="archive" name="kwetter.war">
-      <element id="artifact" artifact-name="Kwetteren-in-bad-Auth:war exploded" />
-    </root>
-  </artifact>
-</component>
