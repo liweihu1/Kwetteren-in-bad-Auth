@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="authwar">
-    <output-path>$PROJECT_DIR$/out/artifacts/authwar</output-path>
-    <root id="archive" name="authwar.war">
-      <element id="artifact" artifact-name="auth" />
-    </root>
-  </artifact>
-</component>
