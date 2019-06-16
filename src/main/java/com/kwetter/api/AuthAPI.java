@@ -13,8 +13,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.security.auth.login.LoginContext;
-import javax.security.auth.login.LoginException;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
